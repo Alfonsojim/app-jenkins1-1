@@ -17,8 +17,10 @@ pipeline {
     }
     stage('Push Registry') {
       steps {
-        sh 'docker tag app:test mmiguel80/app:stable'
-        sh 'docker push mmiguel80/app:stable'
+        withCredentials([usernamePassword(credentialsId: 'mmiguel80_docker', passwordVariable: 'password', usernameVariable: 'user')]) {
+          sh 'docker tag app:test mmiguel80/app:stable'
+          sh 'docker push mmiguel80/app:stable'
+        }
       }
     }
   }
