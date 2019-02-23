@@ -18,7 +18,7 @@ pipeline {
     stage('Push Registry') {
       steps {
         withCredentials([usernamePassword(credentialsId: 'dockerHubCred', passwordVariable: 'Password', usernameVariable: 'Username')]) {
-          sh 'docker login -u $Username -p $Password registry.hub.docker.com/'
+          sh 'docker login -u $Username -p $Password docker.io'
           sh 'docker tag app:test mmiguel80/app:stable'
           sh 'docker push mmiguel80/app:stable'
         }
