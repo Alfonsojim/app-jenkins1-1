@@ -1,14 +1,19 @@
 pipeline {
   agent any
   stages {
-    stage('Inicio') {
+    stage('Build') {
       steps {
-        echo 'Hola desde Stage Inicio'
+        sh 'docker build -t app .'
       }
     }
-    stage('Stage 2') {
+    stage('Test') {
       steps {
-        echo 'Hola desde Stage 2'
+        echo 'TEST'
+      }
+    }
+    stage('Deploy') {
+      steps {
+        echo 'DEPLOY'
       }
     }
   }
