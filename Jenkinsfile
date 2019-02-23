@@ -18,7 +18,7 @@ pipeline {
     stage('Push Registry') {
       steps {
         sh 'docker tag app:test mmiguel80/app:stable'
-        sh 'docker push app mmiguel80/app:stable'
+        sh 'docker push mmiguel80/app:stable'
       }
     }
   }
